@@ -14,14 +14,11 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - echo Building the Docker image...          
-      - docker build -t amazon-ecs-sample .
-      - docker tag amazon-ecs-sample 175471962215.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/amazon-ecs-sample:testcodebuild      
+      - echo Building the Docker image...                
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 175471962215.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/amazon-ecs-sample:testcodebuild
       - echo test kubernetes
       - cd ~/..
       - find config
