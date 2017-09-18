@@ -1,6 +1,12 @@
 version: 0.2
 
 phases:
+  install:
+    commands:
+      - echo install kubectl
+      - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.7.0/bin/linux/amd64/kubectl
+      - chmod +x ./kubectl
+      - sudo mv ./kubectl /usr/local/bin/kubectl
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
@@ -17,3 +23,4 @@ phases:
       - echo Pushing the Docker image...
       - docker push 175471962215.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/amazon-ecs-sample:testcodebuild
       - echo test kubernetes
+      - kubectl version
