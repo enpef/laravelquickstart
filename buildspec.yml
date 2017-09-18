@@ -21,4 +21,4 @@ phases:
       - echo Pushing the Docker image...
       - echo test kubernetes
       - cd ~/..
-      - find config
+      - find . -name "config"
