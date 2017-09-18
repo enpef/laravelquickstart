@@ -10,10 +10,13 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...          
       - docker build -t amazon-ecs-sample .
-      - docker tag amazon-ecs-sample 175471962215.dkr.ecr.ap-southeast-1.amazonaws.com/amazon-ecs-sample:testcodebuild      
+      - docker tag amazon-ecs-sample $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/amazon-ecs-sample:testcodebuild      
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 175471962215.dkr.ecr.ap-southeast-1.amazonaws.com/amazon-ecs-sample:testcodebuild
+      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/amazon-ecs-sample:testcodebuild
       - echo test kubernetes
+      - aws configure set aws_access_key_id $aws_access_key_id --profile natdanai@carro.co
+      - aws configure set aws_secret_access_key $aws_secret-access-key --profile natdanai@carro.co
+      - cat ~/.aws/credentials 
