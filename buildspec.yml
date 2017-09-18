@@ -23,4 +23,4 @@ phases:
       - echo Pushing the Docker image...
       - docker push 175471962215.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/amazon-ecs-sample:testcodebuild
       - echo test kubernetes
-      - kubectl version
+      - kubectl get node
